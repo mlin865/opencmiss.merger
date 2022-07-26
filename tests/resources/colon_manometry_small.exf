@@ -1,0 +1,47 @@
+EX Version: 3
+Region: /
+!#nodeset datapoints
+Time sequence: times1, size=3
+ -2.900000000000000e+01 -2.800000000000000e+01 -2.700000000000000e+01
+Define node template: node1
+Shape. Dimension=0
+#Fields=2
+1) marker_name, field, string, #Components=1
+ 1. #Values=1 (value)
+2) pressure, field, rectangular cartesian, real, #Components=1, time sequence=times1
+ 1. #Values=1 (value)
+Node template: node1
+Node: 1
+ P10
+  9.941674411000000e+01
+  1.192664586000000e+02
+  1.302854108000000e+02
+Node: 2
+ P19
+  3.191889929000000e+01
+  4.317005194000000e+01
+  6.151720251000000e+01
+Node: 3
+ T13
+  1.166554512000000e+02
+  1.179850120000000e+02
+  1.057435411000000e+02
+Node: 4
+ T19
+  8.612494396000000e+01
+  8.317915970000000e+01
+  9.972939933000001e+01
+Node: 5
+ D16
+  9.068721327000000e+01
+  1.055795362000000e+02
+  8.717834230000000e+01
+Node: 6
+ D19
+  8.937411724000000e+01
+  8.176143062000000e+01
+  9.197379270000000e+01
+Group name: marker
+!#nodeset datapoints
+Node group:
+1..6

@@ -1,0 +1,353 @@
+EX Version: 3
+Region: /
+!#nodeset nodes
+Define node template: node1
+Shape. Dimension=0
+#Fields=1
+1) coordinates, coordinate, rectangular cartesian, real, #Components=3
+ x. #Values=4 (value,d/ds1,d/ds2,d/ds3)
+ y. #Values=4 (value,d/ds1,d/ds2,d/ds3)
+ z. #Values=4 (value,d/ds1,d/ds2,d/ds3)
+Node template: node1
+Node: 1
+  0.000000000000000e+00  1.000000000000000e+00  0.000000000000000e+00  0.000000000000000e+00
+  0.000000000000000e+00  0.000000000000000e+00  1.000000000000000e+00  0.000000000000000e+00
+  0.000000000000000e+00  0.000000000000000e+00  0.000000000000000e+00  1.000000000000000e+00
+Node: 2
+  1.000000000000000e+00  1.000000000000000e+00  0.000000000000000e+00  0.000000000000000e+00
+  0.000000000000000e+00  0.000000000000000e+00  1.000000000000000e+00  0.000000000000000e+00
+  0.000000000000000e+00  0.000000000000000e+00  0.000000000000000e+00  1.000000000000000e+00
+Node: 3
+  0.000000000000000e+00  1.000000000000000e+00  0.000000000000000e+00  0.000000000000000e+00
+  1.000000000000000e+00  0.000000000000000e+00  1.000000000000000e+00  0.000000000000000e+00
+  0.000000000000000e+00  0.000000000000000e+00  0.000000000000000e+00  1.000000000000000e+00
+Node: 4
+  1.000000000000000e+00  1.000000000000000e+00  0.000000000000000e+00  0.000000000000000e+00
+  1.000000000000000e+00  0.000000000000000e+00  1.000000000000000e+00  0.000000000000000e+00
+  0.000000000000000e+00  0.000000000000000e+00  0.000000000000000e+00  1.000000000000000e+00
+Node: 5
+  0.000000000000000e+00  1.000000000000000e+00  0.000000000000000e+00  0.000000000000000e+00
+  0.000000000000000e+00  0.000000000000000e+00  1.000000000000000e+00  0.000000000000000e+00
+  1.000000000000000e+00  0.000000000000000e+00  0.000000000000000e+00  1.000000000000000e+00
+Node: 6
+  1.000000000000000e+00  1.000000000000000e+00  0.000000000000000e+00  0.000000000000000e+00
+  0.000000000000000e+00  0.000000000000000e+00  1.000000000000000e+00  0.000000000000000e+00
+  1.000000000000000e+00  0.000000000000000e+00  0.000000000000000e+00  1.000000000000000e+00
+Node: 7
+  0.000000000000000e+00  1.000000000000000e+00  0.000000000000000e+00  0.000000000000000e+00
+  1.000000000000000e+00  0.000000000000000e+00  1.000000000000000e+00  0.000000000000000e+00
+  1.000000000000000e+00  0.000000000000000e+00  0.000000000000000e+00  1.000000000000000e+00
+Node: 8
+  1.000000000000000e+00  1.000000000000000e+00  0.000000000000000e+00  0.000000000000000e+00
+  1.000000000000000e+00  0.000000000000000e+00  1.000000000000000e+00  0.000000000000000e+00
+  1.000000000000000e+00  0.000000000000000e+00  0.000000000000000e+00  1.000000000000000e+00
+Define node template: node2
+Shape. Dimension=0
+#Fields=3
+1) coordinates, coordinate, rectangular cartesian, real, #Components=3
+ x. #Values=1 (value)
+ y. #Values=1 (value)
+ z. #Values=1 (value)
+2) marker_location, field, element_xi, #Components=1, host mesh=mesh3d, host mesh dimension=3
+ 1. #Values=1 (value)
+3) marker_name, field, string, #Components=1
+ 1. #Values=1 (value)
+Node template: node2
+Node: 9
+  1.000000000000000e-01
+  1.000000000000000e-01
+  4.000000000000000e-01
+ 1  1.000000000000000e-01  1.000000000000000e-01  4.000000000000000e-01
+ T13
+Define node template: node3
+Shape. Dimension=0
+#Fields=2
+1) marker_location, field, element_xi, #Components=1, host mesh=mesh3d, host mesh dimension=3
+ 1. #Values=1 (value)
+2) marker_name, field, string, #Components=1
+ 1. #Values=1 (value)
+Node template: node3
+Node: 10
+ 1  7.000000000000000e-01  9.000000000000000e-01  3.000000000000000e-01
+ D19
+!#mesh mesh1d, dimension=1, nodeset=nodes
+Define element template: element1
+Shape. Dimension=1, line
+#Scale factor sets=0
+#Nodes=0
+#Fields=0
+Element template: element1
+Element: 1
+Element: 2
+Element: 3
+Element: 4
+Element: 5
+Element: 6
+Element: 7
+Element: 8
+Element: 9
+Element: 10
+Element: 11
+Element: 12
+!#mesh mesh2d, dimension=2, face mesh=mesh1d, nodeset=nodes
+Define element template: element2
+Shape. Dimension=2, line*line
+#Scale factor sets=0
+#Nodes=0
+#Fields=0
+Element template: element2
+Element: 1
+ Faces:
+ 1 2 3 4
+Element: 2
+ Faces:
+ 5 6 7 8
+Element: 3
+ Faces:
+ 9 10 1 5
+Element: 4
+ Faces:
+ 11 12 2 6
+Element: 5
+ Faces:
+ 3 7 9 11
+Element: 6
+ Faces:
+ 4 8 10 12
+!#mesh mesh3d, dimension=3, face mesh=mesh2d, nodeset=nodes
+Define element template: element3
+Shape. Dimension=3, line*line*line
+#Scale factor sets=0
+#Nodes=8
+#Fields=1
+1) coordinates, coordinate, rectangular cartesian, real, #Components=3
+ x. c.Hermite*c.Hermite*c.Hermite, no modify, standard node based.
+  #Nodes=8
+  1. #Values=3
+   Value labels: value d/ds1 d/ds2
+  0. #Values=1
+   Value labels: zero
+  1. #Values=1
+   Value labels: d/ds3
+  0. #Values=3
+   Value labels: zero zero zero
+  2. #Values=3
+   Value labels: value d/ds1 d/ds2
+  0. #Values=1
+   Value labels: zero
+  2. #Values=1
+   Value labels: d/ds3
+  0. #Values=3
+   Value labels: zero zero zero
+  3. #Values=3
+   Value labels: value d/ds1 d/ds2
+  0. #Values=1
+   Value labels: zero
+  3. #Values=1
+   Value labels: d/ds3
+  0. #Values=3
+   Value labels: zero zero zero
+  4. #Values=3
+   Value labels: value d/ds1 d/ds2
+  0. #Values=1
+   Value labels: zero
+  4. #Values=1
+   Value labels: d/ds3
+  0. #Values=3
+   Value labels: zero zero zero
+  5. #Values=3
+   Value labels: value d/ds1 d/ds2
+  0. #Values=1
+   Value labels: zero
+  5. #Values=1
+   Value labels: d/ds3
+  0. #Values=3
+   Value labels: zero zero zero
+  6. #Values=3
+   Value labels: value d/ds1 d/ds2
+  0. #Values=1
+   Value labels: zero
+  6. #Values=1
+   Value labels: d/ds3
+  0. #Values=3
+   Value labels: zero zero zero
+  7. #Values=3
+   Value labels: value d/ds1 d/ds2
+  0. #Values=1
+   Value labels: zero
+  7. #Values=1
+   Value labels: d/ds3
+  0. #Values=3
+   Value labels: zero zero zero
+  8. #Values=3
+   Value labels: value d/ds1 d/ds2
+  0. #Values=1
+   Value labels: zero
+  8. #Values=1
+   Value labels: d/ds3
+  0. #Values=3
+   Value labels: zero zero zero
+ y. c.Hermite*c.Hermite*c.Hermite, no modify, standard node based.
+  #Nodes=8
+  1. #Values=3
+   Value labels: value d/ds1 d/ds2
+  0. #Values=1
+   Value labels: zero
+  1. #Values=1
+   Value labels: d/ds3
+  0. #Values=3
+   Value labels: zero zero zero
+  2. #Values=3
+   Value labels: value d/ds1 d/ds2
+  0. #Values=1
+   Value labels: zero
+  2. #Values=1
+   Value labels: d/ds3
+  0. #Values=3
+   Value labels: zero zero zero
+  3. #Values=3
+   Value labels: value d/ds1 d/ds2
+  0. #Values=1
+   Value labels: zero
+  3. #Values=1
+   Value labels: d/ds3
+  0. #Values=3
+   Value labels: zero zero zero
+  4. #Values=3
+   Value labels: value d/ds1 d/ds2
+  0. #Values=1
+   Value labels: zero
+  4. #Values=1
+   Value labels: d/ds3
+  0. #Values=3
+   Value labels: zero zero zero
+  5. #Values=3
+   Value labels: value d/ds1 d/ds2
+  0. #Values=1
+   Value labels: zero
+  5. #Values=1
+   Value labels: d/ds3
+  0. #Values=3
+   Value labels: zero zero zero
+  6. #Values=3
+   Value labels: value d/ds1 d/ds2
+  0. #Values=1
+   Value labels: zero
+  6. #Values=1
+   Value labels: d/ds3
+  0. #Values=3
+   Value labels: zero zero zero
+  7. #Values=3
+   Value labels: value d/ds1 d/ds2
+  0. #Values=1
+   Value labels: zero
+  7. #Values=1
+   Value labels: d/ds3
+  0. #Values=3
+   Value labels: zero zero zero
+  8. #Values=3
+   Value labels: value d/ds1 d/ds2
+  0. #Values=1
+   Value labels: zero
+  8. #Values=1
+   Value labels: d/ds3
+  0. #Values=3
+   Value labels: zero zero zero
+ z. c.Hermite*c.Hermite*c.Hermite, no modify, standard node based.
+  #Nodes=8
+  1. #Values=3
+   Value labels: value d/ds1 d/ds2
+  0. #Values=1
+   Value labels: zero
+  1. #Values=1
+   Value labels: d/ds3
+  0. #Values=3
+   Value labels: zero zero zero
+  2. #Values=3
+   Value labels: value d/ds1 d/ds2
+  0. #Values=1
+   Value labels: zero
+  2. #Values=1
+   Value labels: d/ds3
+  0. #Values=3
+   Value labels: zero zero zero
+  3. #Values=3
+   Value labels: value d/ds1 d/ds2
+  0. #Values=1
+   Value labels: zero
+  3. #Values=1
+   Value labels: d/ds3
+  0. #Values=3
+   Value labels: zero zero zero
+  4. #Values=3
+   Value labels: value d/ds1 d/ds2
+  0. #Values=1
+   Value labels: zero
+  4. #Values=1
+   Value labels: d/ds3
+  0. #Values=3
+   Value labels: zero zero zero
+  5. #Values=3
+   Value labels: value d/ds1 d/ds2
+  0. #Values=1
+   Value labels: zero
+  5. #Values=1
+   Value labels: d/ds3
+  0. #Values=3
+   Value labels: zero zero zero
+  6. #Values=3
+   Value labels: value d/ds1 d/ds2
+  0. #Values=1
+   Value labels: zero
+  6. #Values=1
+   Value labels: d/ds3
+  0. #Values=3
+   Value labels: zero zero zero
+  7. #Values=3
+   Value labels: value d/ds1 d/ds2
+  0. #Values=1
+   Value labels: zero
+  7. #Values=1
+   Value labels: d/ds3
+  0. #Values=3
+   Value labels: zero zero zero
+  8. #Values=3
+   Value labels: value d/ds1 d/ds2
+  0. #Values=1
+   Value labels: zero
+  8. #Values=1
+   Value labels: d/ds3
+  0. #Values=3
+   Value labels: zero zero zero
+Element template: element3
+Element: 1
+ Faces:
+ 1 2 3 4 5 6
+ Nodes:
+ 1 2 3 4 5 6 7 8
+Group name: boss
+!#nodeset nodes
+Node group:
+10
+Group name: cmiss_selection
+!#nodeset nodes
+Node group:
+9
+Group name: group1
+!#nodeset nodes
+Node group:
+1..3,5..8
+!#mesh mesh1d, dimension=1, nodeset=nodes
+Element group:
+1..5,8..10,12
+!#mesh mesh2d, dimension=2, face mesh=mesh1d, nodeset=nodes
+Element group:
+1,3,6
+Group name: marker
+!#nodeset nodes
+Node group:
+9..10
+Group name: myanno
+!#nodeset nodes
+Node group:
+9
