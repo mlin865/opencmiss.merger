@@ -2,7 +2,7 @@
 
 # -- Project information
 
-project = 'OpenCMISS Merger'
+project = 'CMLibs Merger'
 copyright = '2022, University of Auckland'
 author = 'University of Auckland'
 

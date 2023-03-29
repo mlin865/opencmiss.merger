@@ -1,8 +1,8 @@
 import unittest
 
-from opencmiss.merger.points import merge_markers
-from opencmiss.zinc.context import Context
-from opencmiss.zinc.status import OK as ZINC_OK
+from cmlibs.merger.points import merge_markers
+from cmlibs.zinc.context import Context
+from cmlibs.zinc.status import OK as ZINC_OK
 
 from tests.shared import resource_path
 
