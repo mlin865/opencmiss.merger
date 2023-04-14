@@ -1,10 +1,10 @@
 import json
 import os.path
 
-from opencmiss.zinc.context import Context
-from opencmiss.zinc.field import Field
-from opencmiss.zinc.status import OK as ZINC_OK
-from opencmiss.merger.errors import OpenCMISSMergeInvalidInputs, OpenCMISSMergeFileReadFailed
+from cmlibs.zinc.context import Context
+from cmlibs.zinc.field import Field
+from cmlibs.zinc.status import OK as ZINC_OK
+from cmlibs.merger.errors import ZincMergeInvalidInputs, ZincMergeFileReadFailed
 
 
 def display_field_info(field_info):
@@ -256,10 +256,10 @@ def _clone_node_in_output_region(node_info, region):
 
 def merge_matching_markers(dominant_file, recessive_file, output_directory=None):
     if not os.path.isfile(dominant_file):
-        raise OpenCMISSMergeInvalidInputs("Invalid dominant file given.")
+        raise ZincMergeInvalidInputs("Invalid dominant file given.")
 
     if not os.path.isfile(recessive_file):
-        raise OpenCMISSMergeInvalidInputs("Invalid dominant file given.")
+        raise ZincMergeInvalidInputs("Invalid dominant file given.")
 
     c = Context("data")
     root_region = c.getDefaultRegion()
@@ -269,11 +269,11 @@ def merge_matching_markers(dominant_file, recessive_file, output_directory=None)
 
     result = dominant_region.readFile(dominant_file)
     if result != ZINC_OK:
-        raise OpenCMISSMergeFileReadFailed(f"Failed to read file '{dominant_file}'")
+        raise ZincMergeFileReadFailed(f"Failed to read file '{dominant_file}'")
 
     result = recessive_region.readFile(recessive_file)
     if result != ZINC_OK:
-        raise OpenCMISSMergeFileReadFailed(f"Failed to read file '{recessive_file}'")
+        raise ZincMergeFileReadFailed(f"Failed to read file '{recessive_file}'")
 
     dominant_marker_info = _fetch_marker_information(dominant_region)
     dominant_regions_marker_info = {
@@ -322,7 +322,7 @@ class Merger(object):
         region = root_region.createChild(region_name)
         result = region.readFile(filename)
         if result != ZINC_OK:
-            raise OpenCMISSMergeFileReadFailed(f"Failed to read file '{filename}'")
+            raise ZincMergeFileReadFailed(f"Failed to read file '{filename}'")
 
         return region
 

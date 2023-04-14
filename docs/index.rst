@@ -1,14 +1,14 @@
-OpenCMISS Merger
-================
+CMLibs Merger
+=============
 
-**OpenCMISS Merger** is a Python package for merging real valued fields from a set of nodes in a markers group onto another set of nodes in a markers group.
+**CMLibs Merger** is a Python package for merging real valued fields from a set of nodes in a markers group onto another set of nodes in a markers group.
 
 Usage
 -----
 
 ::
 
- from opencmiss.merger.points import Merger
+ from cmlibs.merger.points import Merger
 
  merger = Merger()
 
@@ -40,7 +40,7 @@ Package API
 Points Module
 *************
 
-.. automodule:: opencmiss.merger.points
+.. automodule:: cmlibs.merger.points
 
-.. autoclass:: opencmiss.merger.points.Merger
+.. autoclass:: cmlibs.merger.points.Merger
    :members:
