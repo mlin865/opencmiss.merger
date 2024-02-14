@@ -119,8 +119,7 @@ def _fetch_marker_information(region):
     DOMAIN_TYPES = [Field.DOMAIN_TYPE_DATAPOINTS, Field.DOMAIN_TYPE_NODES, Field.DOMAIN_TYPE_POINT]
     for domain in DOMAIN_TYPES:
         domain_nodes = field_module.findNodesetByFieldDomainType(domain)
-        node_group_field = marker_group.getFieldNodeGroup(domain_nodes)
-        node_group = node_group_field.getNodesetGroup()
+        node_group = marker_group.getNodesetGroup(domain_nodes)
         node_iterator = node_group.createNodeiterator()
 
         node_template = node_group.createNodetemplate()
