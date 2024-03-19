@@ -31,7 +31,7 @@ readme.append('')
 
 software_licence = readfile("LICENSE")
 
-requires = ['cmlibs.zinc']
+requires = ['cmlibs.zinc', 'cmlibs.utils']
 
 setup(
     name='cmlibs.merger',

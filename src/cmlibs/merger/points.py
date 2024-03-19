@@ -113,7 +113,7 @@ def _fetch_marker_information(region):
         if group:
             marker_group = group
 
-    if not marker_group.isValid():
+    if marker_group is None or not marker_group.isValid():
         return marker_info
 
     DOMAIN_TYPES = [Field.DOMAIN_TYPE_DATAPOINTS, Field.DOMAIN_TYPE_NODES, Field.DOMAIN_TYPE_POINT]
@@ -258,7 +258,7 @@ def merge_matching_markers(dominant_file, recessive_file, output_directory=None)
         raise ZincMergeInvalidInputs("Invalid dominant file given.")
 
     if not os.path.isfile(recessive_file):
-        raise ZincMergeInvalidInputs("Invalid dominant file given.")
+        raise ZincMergeInvalidInputs("Invalid recessive file given.")
 
     c = Context("data")
     root_region = c.getDefaultRegion()

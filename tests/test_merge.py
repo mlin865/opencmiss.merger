@@ -1,6 +1,10 @@
+import os.path
 import unittest
 
-from cmlibs.merger.points import merge_markers
+from cmlibs.zinc.field import Field
+
+# from cmlibs.merger.points import merge_markers
+from cmlibs.merger.datapoints import merge
 from cmlibs.zinc.context import Context
 from cmlibs.zinc.status import OK as ZINC_OK
 
@@ -49,3 +53,25 @@ class PointsMerge(unittest.TestCase):
             _merge_node_pair(pair)
 
         r1.writeFile("output.exf")
+
+    def test_datapoint_merge(self):
+        if os.path.isfile(resource_path("datapoints_I_merged.exf")):
+            os.remove(resource_path("datapoints_I_merged.exf"))
+
+        datapoint_I_file = resource_path("datapoints_I.exf")
+        datapoint_II_file = resource_path("datapoints_II.exf")
+
+        c = Context("data")
+        output_exf = merge(datapoint_I_file, datapoint_II_file, c, output_directory=resource_path(""))
+
+        c_output = Context("output")
+        region = c_output.getDefaultRegion()
+        region.readFile(output_exf)
+
+        fm = region.getFieldmodule()
+        nodes = fm.findNodesetByFieldDomainType(Field.DOMAIN_TYPE_DATAPOINTS)
+        self.assertEqual(22, nodes.getSize())
+        inner_surface_field = fm.findFieldByName('inner_surface')
+        outer_surface_field = fm.findFieldByName('outer_surface')
+        self.assertEqual(10, inner_surface_field.castGroup().getNodesetGroup(nodes).getSize())
+        self.assertEqual(12, outer_surface_field.castGroup().getNodesetGroup(nodes).getSize())
