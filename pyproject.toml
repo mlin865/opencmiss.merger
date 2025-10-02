@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=61.0", "setuptools_scm>=8.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools-git-versioning]
+enabled = true
+
+[project]
+name = "cmlibs.merger"
+dynamic = ["version"]
+keywords = ["Merge", "CMLibs", "Zinc"]
+readme = "README.rst"
+license = "Apache-2.0"
+authors = [
+    { name="Hugh Sorby", email="h.sorby@auckland.ac.nz" },
+]
+dependencies = [
+    'cmlibs.utils',
+    'cmlibs.zinc >= 4.2.0'
+]
+description = "Merge together datapoints or points from different exf file using CMLibs Zinc."
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering :: Medical Science Apps.",
+]
+
+[project.urls]
+Homepage = "https://cmlibs.org"
+Repository = "https://github.com/CMLibs-Python/cmlibs.merger"
+
+[tool.setuptools_scm]
